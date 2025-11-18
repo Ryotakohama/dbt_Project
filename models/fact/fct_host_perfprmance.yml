@@ -1,0 +1,18 @@
+version : 2
+
+models:
+  - name: fct_host_performance
+    description: "Host performance fact tacle"
+    columns:
+      - name: host_id
+        description: "Unique identifier for each host"
+        tests:
+          - not_null
+          - unique
+
+      - name: avg_positive_review_percentage
+        description: "Average percentage of positive reviews for the host"
+        tests:
+          - not_null
+           
+              

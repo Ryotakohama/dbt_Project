@@ -26,10 +26,9 @@ clean-targets:
 models:
   my_project:
     # Sets the default materialization for ALL models in the project to 'view'
-    models:
-      dimension:
-        +materialized: table
-      fact:
-        +materialized: table
-      staging:
-        +materialized: view
+    dimension:
+      +materialized: table
+    fact:
+      +materialized: table
+    staging:
+      +materialized: view
