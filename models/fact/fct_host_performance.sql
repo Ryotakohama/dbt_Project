@@ -2,6 +2,7 @@
 {{ config(materialized='table') }}
 select 
     dh.host_id,
+    dl.listings_id,
     dh.host_name,
     count(distinct dl.listings_id) as total_listings,
     round(avg(flr.positive_review_percentage),2) as avg_positive_review_percentage,
@@ -17,6 +18,6 @@ join {{ ref('dim_listings')}} dl
     on dh.host_id = dl.host_id
 join {{ ref('fct_listing_review_summary')}} flr 
     on dl.listings_id = flr.listings_id
-group by dh.host_id, dh.host_name
+group by dh.host_id, dh.host_name, dl.listings_id
 order by total_listings desc
 
